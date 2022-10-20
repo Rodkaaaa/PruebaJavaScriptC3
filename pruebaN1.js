@@ -21,22 +21,46 @@ function descuento(compra,dia){
                     }
                     console.log(totalCD);
                     return `el total de la compra es: $${totalSD}, pero con descuento le quedo: $${Math.trunc(totalCD)}, con un descuento de: $${Math.trunc(totalSD-totalCD)}`;
-                    }else{
-                        for(let i = 0 ; i< compra.length; i++){
-                            totalSD += compra[i]
-                            arrayNew.push(compra[i]-(compra[i] * 0.20));
-                            totalCD += arrayNew[i];
+            }else{
+                    for(let i = 0 ; i< compra.length; i++){
+                        totalSD += compra[i]
+                        arrayNew.push(compra[i]-(compra[i] * 0.20));
+                        totalCD += arrayNew[i];
                     }
                     console.log(totalCD);
                     return `el total de la compra es: $${totalSD}, pero con descuento le quedo: $${Math.trunc(totalCD)}, con un descuento de: $${Math.trunc(totalSD-totalCD)}`;
+                }
+        case 'lunes' || 'miercoles' || 'viernes' || 'sabado' || 'domingo': 
+                for (const obj of compra) {
+                    console.log(obj)
+                    if(obj>10000){
+                        c10++
+                        console.log(c10)
+                    }
+                }
+                if(compra.length>3 && c10>0){
+                        for(let i = 0 ; i< compra.length; i++){
+                            totalSD += compra[i]
+                            arrayNew.push(compra[i]-(compra[i] * 0.05));
+                            totalCD += arrayNew[i];
+                        }
+                    console.log(totalCD);
+                    return `el total de la compra es: $${totalSD}, pero con descuento le quedo: $${Math.trunc(totalCD)}, con un descuento de: $${Math.trunc(totalSD-totalCD)}`;
+                }else{
+                        for(let i = 0 ; i< compra.length; i++){
+                            totalSD += compra[i]
+                            arrayNew.push(compra[i]-(compra[i]));
+                            totalCD += arrayNew[i];
+                        }
+                    console.log(totalCD);
+                    return `el total de la compra es: $${totalSD}`;
                 }
         
         default:
             return `uno de los valores es invalido`;
     }
 }
-console.log(descuento([200,2002,200,2000],'martes'));
-
+console.log(descuento([200,2002,200,2000],'lunes'));
 function precioNegativo(compra){
     let contadorN = 0;
     for (const obj of compra) {
